@@ -1,0 +1,74 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// 余白
+body{
+  padding-top: 1em;
+}
+
+// 節
+section{
+  overflow: auto;
+}
+
+// ページ上でユーザーが任意の文字を入力できる、複数行の入力欄のこ
+textarea {
+  // 横方向のみリサイズを可能とします
+  resize: vertical;
+}
+
+.center{
+  text-align: center;
+}
+
+.center h1{
+  // text-align 水平方向の配置
+  margin-bottom: 10px;
+}
+
+// 共通
+h1,h2,h3,h4,h5,h6{
+  // 行ボックスの高さを設定
+  line-height: 10px;
+}
+
+h1{
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2{
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p{
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+#logo{
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  // 要素のテキストを大文字表記する方法を指定
+  // https://developer.mozilla.org/ja/docs/Web/CSS/text-transform
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  // フォントの太さ (あるいは重み) を指定
+  // https://developer.mozilla.org/ja/docs/Web/CSS/font-weight
+  font-weight: bold;
+}
+
+#logo{
+  color: #fff;
+  text-decoration: none;
+}
