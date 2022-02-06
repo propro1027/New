@@ -2,8 +2,21 @@
 <h1>ユーザー登録</h1>
 <p>このページでは必要な項目を入力して、ユーザーを新規作成します。</p>
 
+<%
+=begin%>
+ あくまでも原則であり、これとは違った形で指定することもありますが、大枠はこのようなルールに則って記述します。
+class = “container”（固定枠）または”container-fluid”（流動枠）の中に書く
+class = “row”の中に書く
+class = “col-{prefix}-{columns}”の形で書く
+class = {columns}は合計が12になるようにする 
+<%
+=end%>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+  <%= render 'shared/error_messages'%>
+  
+
     <%= form_with(model: @user, local: true) do |f| %>
       <%= f.label :name, class: "label-signup" %>
       <%= f.text_field :name, class: "form-control" %>

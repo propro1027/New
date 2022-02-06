@@ -1,0 +1,28 @@
+<%
+=begin%>
+ @userに対しエラーが発生しているかどうか条件式を記述
+エラーが発生している場合のみ、その後に記述されているプログラムが実行 
+<%
+=end%>
+
+
+<% if @user.errors.any? %>
+<div id="error">
+<div class="alert-danger">
+<%
+=begin%>
+ pluralizeメソッドは英語専用のテキストヘルパーです。
+このメソッドは最初の引数に整数が与えられると、
+それに基づき2番目の引数で指定した英単語を複数形に変換して値を返します。 
+"1 error" "2 errors"のようにエラーの件数に応じて適切な英文を返します。
+<%
+=end%>
+<%= pluralize(@user.errors.count, "error") %>
+</div>
+<ul>
+<% @user.errors.full_messages.each do |msg|%>
+<li><%= msg %></li>
+<%end%>
+</ul>
+</div>
+<%end%>

@@ -95,3 +95,19 @@ p{
 .btn-signup{
   margin-top: 10px;
 }
+
+#error{
+  color: red;
+  ul{
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+// https://makolog.xyz/rails-tutorial-2ndtime/
+// .field_with_erros{
+//   @extend.has-error;
+//   .form-control{
+//     color:$state-danger-text;
+//   }
+// }
