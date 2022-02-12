@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
-  post '/lgoin+', to: 'sessions#create'
+  post '/lgoin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy' 
 
   root 'home#top'

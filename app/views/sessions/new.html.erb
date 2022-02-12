@@ -2,7 +2,7 @@
 <div class="col-md-6 col-md-offset-3">
 
 <h1>マイページへログイン</h1>
-<%= form_with(scope: :session,url:login_path,local:true) do |f| %>
+<%= form_with(scope: :session, url: login_path, local: true) do |f| %>
 
 <%= f.label :email, class: "label-login" %>
 <%= f.email_field :email, class: 'form-control' %>
