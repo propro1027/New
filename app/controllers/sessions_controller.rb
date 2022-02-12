@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][password])
       # session helperでuser をcookieies
       log_in (user)
+      remenber (user)
       redirect_to (user)
     else
       flash.now[:danger] = '認証に失敗しました...'
