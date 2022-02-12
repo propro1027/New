@@ -58,5 +58,8 @@ def authenticated?(remenber_token)
   BCrypt::Password.new(remenber_digest).is_password?(remenber_token)
 end
 
+def forget
+  update_attribute(:remenber_digest, nil)
+end
 
 end
