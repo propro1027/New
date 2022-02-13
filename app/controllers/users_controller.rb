@@ -18,7 +18,10 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
+  def edit
+    @user = User.find_by(params[:id])
+  end  
   # Web経由で外部のユーザーが知る必要は無いため、privateキーワードを用いて外部からは使用できないようにします。
   private
   	def user_params
