@@ -43,7 +43,7 @@ module SessionsHelper
   #   redirect_to login_url
   #  end
   # end
-
+  end
 
     # 渡されたユーザーがログイン済みのユーザーであればtrueを返します。
  def current_user?(user)
@@ -57,7 +57,7 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
-  
+
 
  def log_out
   forget(current_user)
@@ -76,7 +76,8 @@ module SessionsHelper
 
   # 記憶しているURL(またはデフォルトURL)にリダイレクトします。
  def redirect_back_or(default_url)
-  redirect_to (session[:fowarding_url]|| :default_url)
+  # redirect_to(session[:fowarding_url]|| :default_url)
+  redirect_to(session[:forwarding_url] || default_url)
   session.delete(:fowarding_url)
  end
 
@@ -85,5 +86,4 @@ module SessionsHelper
   session[:fowarding_url] = request.original_url if request.get?
   end
 
-end
 end
