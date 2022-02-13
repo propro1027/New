@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+   # 「remember_token」という仮想の属性を作成します。
+   attr_accessor :remember_token
+   
   # Active Recordのコールバックメソッド(before_save)
   # 現在のメールアドレス（self.email）の値をdowncaseメソッドを使って小文字に変換
   before_save {self.email = email.downcase}
@@ -8,12 +11,12 @@ class User < ApplicationRecord
   
   # ruby:本アプリケーションでのメールアドレスの正規表現
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
   validates :email, presence: true,length: {maximum: 30},
   format: { with: VALID_EMAIL_REGEX },
-  
   # DBに保存する前に一意かどうかを検証
   uniqueness: true
+
+
   # セキュアパスワードというパスワードとパスワード確認をユーザーに入力させ、その２つの値をハッシュ化したものをデータベースに保存するという方法で脆弱性を回避します。
   has_secure_password
   validates :password, presence: true,length: {minimum: 6}, allow_nil: true
@@ -34,7 +37,7 @@ class User < ApplicationRecord
 
   # ランダムなトークンを返します。
 def User.new_token
-  SecureRandom.urlsafe_base64
+    SecureRandom.urlsafe_base64
 end
 
 # 永続セッションのためにハッシュ化したトークンをDB上に保存するめっそど
