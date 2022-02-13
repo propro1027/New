@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'bootstrap-sass'
 gem 'bcrypt'
-
+gem 'faker'
+gem 'will_paginate'
 
 # ruby "2.7.5"
 ruby "2.7.0"

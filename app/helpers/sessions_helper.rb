@@ -7,7 +7,7 @@ module SessionsHelper
 
   # 現在ログインしているユーザーオブジェクトの各値を取れるようにすること
   # 現在ログイン中のユーザーがいる場合オブジェクトを返します。
-def current_user
+  def current_user
   # if session[:user_id]
     # findだとnil発生ありうるからfind_by
         # A                  B      or               C     
@@ -31,29 +31,51 @@ def current_user
         @current_user = user
       end
     end
-    
-  end
-end
+   end
 
 # 現在ログイン中のユーザーがいればtrue、そうでなければfalseを返します。
-def logged_in?
+  def logged_in?
   # current_userは空ではない？　つまり入れ歯true
   !current_user.nil?
-end
+  # unless logged_in?
+  #   store
+  #   flash[:danger] = "ログインしてください"
+  #   redirect_to login_url
+  #  end
+  # end
 
 
-def log_out
+    # 渡されたユーザーがログイン済みのユーザーであればtrueを返します。
+ def current_user?(user)
+  user == current_user
+  end
+
+
+ def log_out
   forget(current_user)
   session.delete(:user_id)
   @current_user= nil
-end
+ end
 
-def remenber(user)
+ def remenber(user)
   user.remenber
-  # id get
+  # id get3
   cookies.permanent.signed[:user_id] = user.id
   # token get
   cookies.permanent[:remenber_token] = user.remenber_token
   
-end
+ end
 
+  # 記憶しているURL(またはデフォルトURL)にリダイレクトします。
+ def redirect_back_or(default_url)
+  redirect_to (session[:fowarding_url]|| :default_url)
+  session.delete(:fowarding_url)
+ end
+
+  # アクセスしようとしたURLを記憶します。
+  def store
+  session[:fowarding_url] = request.original_url if request.get?
+  end
+
+end
+end

@@ -2,12 +2,12 @@
 @import "bootstrap";
 
 // 余白
-body{
+body {
   padding-top: 1em;
 }
 
 // 節
-section{
+section {
   overflow: auto;
 }
 
@@ -17,29 +17,34 @@ textarea {
   resize: vertical;
 }
 
-.center{
+.center {
   text-align: center;
 }
 
-.center h1{
+.center h1 {
   // text-align 水平方向の配置
   margin-bottom: 10px;
 }
 
 // 共通
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   // 行ボックスの高さを設定
   line-height: 10px;
 }
 
-h1{
+h1 {
   font-size: 10em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
 
-h2{
+h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
@@ -48,12 +53,12 @@ h2{
   color: #777;
 }
 
-p{
+p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
 
-#logo{
+#logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
@@ -68,7 +73,7 @@ p{
   font-weight: bold;
 }
 
-#logo{
+#logo {
   color: #fff;
   text-decoration: none;
 }
@@ -78,27 +83,27 @@ p{
   float: left;
   width: 100%;
   margin-top: 45px;
-  -moz-box-sizing:    border-box;
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing:         border-box;
+  box-sizing: border-box;
 }
 
-.user-table{
+.user-table {
   vertical-align: middle;
   text-align: center;
 }
 
-.label-signup{
+.label-signup {
   margin-top: 5px;
 }
 
-.btn-signup{
+.btn-signup {
   margin-top: 10px;
 }
 
-#error{
+#error {
   color: red;
-  ul{
+  ul {
     color: red;
     margin: 0 0 30px 0;
   }
@@ -112,11 +117,11 @@ p{
 //   }
 // }
 
-.label-login{
+.label-login {
   margin-top: 5px;
 }
 
-.btn-login{
+.btn-login {
   margin-top: 10px;
 }
 
@@ -143,4 +148,12 @@ p{
 
 .btn-user--edit {
   margin-top: 10px;
+}
+
+/* ユーザー一覧ページ */
+
+#table-users {
+  td {
+    vertical-align: middle;
+  }
 }

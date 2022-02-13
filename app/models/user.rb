@@ -16,7 +16,7 @@ class User < ApplicationRecord
   uniqueness: true
   # セキュアパスワードというパスワードとパスワード確認をユーザーに入力させ、その２つの値をハッシュ化したものをデータベースに保存するという方法で脆弱性を回避します。
   has_secure_password
-  validates :password, presence: true,length: {minimum: 6}
+  validates :password, presence: true,length: {minimum: 6}, allow_nil: true
 
 
   # remenber_digest絡み

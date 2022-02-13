@@ -11,9 +11,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # session helperでuser をcookieies
       log_in (user)
-      params[:session][:remenber_me] == "1"? remenber(user) : forget(user)
-      remenber (user)
-      redirect_to (user)
+      params[:session][:remenber_me] == '1' ? remenber(user) : forget(user)
+      
+      redirect_back_or (user)
+      # remenber (user)
+      # redirect_to (user)
     else
       flash.now[:danger] = '認証に失敗しました...'
       render :new
@@ -28,3 +30,4 @@ class SessionsController < ApplicationController
   end
 
 end
+ 

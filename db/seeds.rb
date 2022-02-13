@@ -5,3 +5,39 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+# スクリプト　サンプル　user作成
+# coding: utf-8
+# User.create!(name: "admin",
+# email: "admin@email.com",
+# password: "password",
+# password_cofirmation: "password"
+# )
+
+# 40.times do |n|
+#   name = Faker::Name.name
+#   email = "ex-#{n+1}@email.com"
+#   password = "password"
+#   User.create!(name: name,
+#   email: email,
+# password: password,
+# password_cofirmation: password
+# )
+# end  
+
+User.create!(name: "Sample User",
+  email: "sample@email.com",
+  password: "password",
+  password_confirmation: "password",
+  admin: true)
+
+60.times do |n|
+name  = Faker::Name.name
+email = "sample-#{n+1}@email.com"
+password = "password"
+User.create!(name: name,
+    email: email,
+    password: password,
+    password_confirmation: password)
+end
