@@ -12,7 +12,12 @@ module New
     config.load_defaults 7.0
     config.time_zone = 'Asia/Tokyo'
 
+    # デフォルトの言語を日本語に設定
+    config.i18n.default_locale = ja
 
+#   日本語化のため、設定が記述されたロケールファイルを作成
+# 　その前に、それらのファイルの内容がアプリケーションに正しく読み込まれるよう設定を追加する必要があります。
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
 
     # Configuration for the application, engines, and railties goes here.
     #

@@ -5,6 +5,7 @@ gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'faker'
 gem 'will_paginate'
+gem 'rails-i18n'
 
 # ruby "2.7.5"
 ruby "2.7.0"

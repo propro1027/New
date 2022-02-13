@@ -8,7 +8,9 @@
 
 <% if @user.errors.any? %>
 <div id="error">
-<div class="alert-danger">
+< class="alert-danger">
+入力エラーが<%= @user.errors.count %>件ありました。
+</div>
 <%
 =begin%>
  pluralizeメソッドは英語専用のテキストヘルパーです。
@@ -17,8 +19,12 @@
 "1 error" "2 errors"のようにエラーの件数に応じて適切な英文を返します。
 <%
 =end%>
-<%= pluralize(@user.errors.count, "error") %>
-</div>
+<%
+=begin%>
+ <%= pluralize(@user.errors.count, "error") %> 
+<%
+=end%>
+
 <ul>
 <% @user.errors.full_messages.each do |msg|%>
 <li><%= msg %></li>
