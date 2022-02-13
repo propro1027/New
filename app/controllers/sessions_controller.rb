@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       # session helperでuser をcookieies
       log_in (user)
       params[:session][:remenber_me] == '1' ? remenber(user) : forget(user)
-      
       redirect_back_or (user)
       # remenber (user)
       # redirect_to (user)
