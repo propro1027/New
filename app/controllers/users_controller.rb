@@ -7,7 +7,7 @@ before_action :admin, only: :destroy
 
 def index
   # @users = User.all
-  @users = USer.paginate(page: params[:page])
+  @users = User.paginate(page: params[:page])
 end
 
   def new
@@ -22,7 +22,7 @@ end
     @user = User.new(user_params)
     if @user.save
       log_in (@user)
-		flash.now[:success] = "新規登録が完了しました。"
+		flash[:success] = "新規登録が完了しました。"
 		redirect_to @user
     else
 	  flash.now[:danger] = "新規登録に失敗しました。"
@@ -36,7 +36,7 @@ end
 
 def update
    # @user = User.find(params[:id])
-  if @user. update_attirbutes(user_params)
+  if @user.update_attirbutes(user_params)
     flash[:success] = "更新が成功しました"
     redirect_to @user
   else
@@ -44,6 +44,12 @@ def update
   end
 end
 
+
+def destroy
+  @user.destroy
+  flash[:success] = "#{@user.name}のデータを削除しました。"
+  redirect_to users_url
+end
 
   # Web経由で外部のユーザーが知る必要は無いため、privateキーワードを用いて外部からは使用できないようにします。
   private

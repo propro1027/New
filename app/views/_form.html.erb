@@ -1,18 +1,37 @@
 <%= form_with(model: @user, local:ture) do |f| %>
 <%= render 'shared/error_messages', object:@user %>
 
-<%= f.label :name, class: "label-#{yield(:class_text)}" %
+<%
+=begin%>
+ <%= f.label :name, class: "label-#{yield(:class_text)}" %>
 <%= text_field :name, class: "form-control" %>
 
-<%= f.label :email, class: "label-#{yield(:class_text)}" %
+<%= f.label :email, class: "label-#{yield(:class_text)}" %>
 <%= text_field :email, class: "form-control" %>
 
-<%= f.label :password, class: "label-#{yield(:class_text)}" %
-<%= text_field :password, class: "form-control" %>
+<%= f.label :password, class: "label-#{yield(:class_text)}" %>
+<%= f.password_field :password, class: "form-control" %>
 
-<%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %
-<%= text_field :password_confirmation, class: "form-control" %>
+<%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %>
+<%= f.password_field :password_confirmation, class: "form-control" %>
 
 <%= f.submit yield(:button_text), class:"btn btn-parimary btn-block btn-#{yield(:class_text)}"%>
 
-<%end%>
+<%end%> 
+<%
+=end%>
+
+  <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :email, class: "label-#{yield(:class_text)}" %>
+  <%= f.email_field :email, class: "form-control" %>
+
+  <%= f.label :password, class: "label-#{yield(:class_text)}" %>
+  <%= f.password_field :password, class: "form-control" %>
+
+  <%= f.label :password_confirmation, class: "label-#{yield(:class_text)}" %>
+  <%= f.password_field :password_confirmation, class: "form-control" %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+<% end %>

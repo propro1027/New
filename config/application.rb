@@ -13,7 +13,7 @@ module New
     config.time_zone = 'Asia/Tokyo'
 
     # デフォルトの言語を日本語に設定
-    config.i18n.default_locale = ja
+    config.i18n.default_locale = :ja
 
 #   日本語化のため、設定が記述されたロケールファイルを作成
 # 　その前に、それらのファイルの内容がアプリケーションに正しく読み込まれるよう設定を追加する必要があります。
