@@ -41,8 +41,7 @@ end
 def remenber
   # ハッシュ化されたトークン情報」を代入
   self.remenber_token = User.new_token
-
-
+  
 #   update_attributeメソッドでトークンダイジェストを更新
 #   pdate_attributesと違い（よく見ると末尾にsがあるかないかの違いがあります）、
 # 　こちらはバリデーションを素通りさせます。
@@ -53,13 +52,19 @@ def remenber
   update_attribute(:remenber_digest, User.digest(remenber_token))
 end
 
+
+
+
 # トークンがダイジェストと一致すればtrueを返します。
 def authenticated?(remenber_token)
+  # ダイジェストが存在しない場合はfalseを返して終了します。
+  return false if remenber_digest.nil?
   BCrypt::Password.new(remenber_digest).is_password?(remenber_token)
 end
 
 def forget
   update_attribute(:remenber_digest, nil)
 end
+
 
 end

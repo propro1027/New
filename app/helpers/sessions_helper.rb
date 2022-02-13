@@ -49,6 +49,7 @@ def log_out
 end
 
 def remenber(user)
+  user.remenber
   # id get
   cookies.permanent.signed[:user_id] = user.id
   # token get
