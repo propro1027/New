@@ -3,11 +3,18 @@
   <head>
     <title>AAA</title>
     <%= csrf_meta_tags %>
+
     <%= stylesheet_link_tag    'application', media: 'all',
                                'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application',
                                'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/def' %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+   <%= render 'layouts/ded' %>
+
   </head>
   <body>
     <%= render 'layouts/header' %>
