@@ -6,6 +6,10 @@ gem 'bcrypt'
 gem 'faker'
 gem 'will_paginate'
 gem 'rails-i18n'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+# gem 'turbolinks', '~> 5'
+
 
 # ruby "2.7.5"
 ruby "2.7.0"
