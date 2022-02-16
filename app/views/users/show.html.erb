@@ -10,8 +10,13 @@
 </tr>
 
 <tr>
-<td>a</td>
-<td>b</td>
+<%
+=begin%>
+ ユーザオブジェクトにdepartmentが存在するか？ 
+<%
+=end%>
+<td>a<%= @user.department.present?? @user.department: "未所属" %></td>
+<td>b<<%= @user.name %></td>
 <td>c</td>
 <td>d</td>
 </tr>
