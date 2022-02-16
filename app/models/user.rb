@@ -21,6 +21,8 @@ class User < ApplicationRecord
   validates :password, presence: true,length: {minimum: 6}, allow_nil: true
 
   validates :department, length: {in: 1..30}, allow_nil: true
+  validates :basic_time, presence: true
+  validates :work_time, presence: true
 
   # remenber_digest絡み
 
