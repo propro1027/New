@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   # editとupdateアクションが実行される直前にlogged_in_userメソッドが実行
-before_action :logged_in_user, only:[:show, :edit, :update, :destory]
-before_action :correct_user, only:[:edit, :update, :destroy]
-before_action :set_user, only:[:show, :edit, :update]
-before_action :admin, only: :destroy
+before_action :logged_in_user, only:[:show, :edit, :update, :destory, :edit_basic_info, :update_basic_info]
+before_action :correct_user, only:[:edit, :update]
+before_action :set_user, only:[:show, :edit, :update, :destory, :edit_basic_info, :update_basic_info]
+before_action :admin, only: [:destroy, :edit_basic_info, :update_basic_info]
 
 def index
   # @users = User.all
@@ -43,6 +43,20 @@ def update
     render :edit
   end
 end
+
+def edit_basic_info
+end
+
+def update_basic_info
+end
+
+
+def destroy
+  @user.destroy
+  flash[:success] = "#{@user.name}のデータを削除しました"
+  redirect_to users_url
+end 
+
 
 
   # Web経由で外部のユーザーが知る必要は無いため、privateキーワードを用いて外部からは使用できないようにします。
