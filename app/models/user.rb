@@ -1,7 +1,12 @@
 class User < ApplicationRecord
+<<<<<<< HEAD
    # 「remember_token」という仮想の属性を作成します。
    attr_accessor :remember_token
    
+=======
+    # 「remember_token」という仮想の属性を作成します。
+    attr_accessor :remenber_token
+>>>>>>> 9
   # Active Recordのコールバックメソッド(before_save)
   # 現在のメールアドレス（self.email）の値をdowncaseメソッドを使って小文字に変換
   before_save {self.email = email.downcase}
@@ -21,6 +26,9 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true,length: {minimum: 6}, allow_nil: true
 
+  validates :department, length: {in: 1..30}, allow_nil: true
+  validates :basic_time, presence: true
+  validates :work_time, presence: true
 
   # remenber_digest絡み
 

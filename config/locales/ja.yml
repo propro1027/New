@@ -1,6 +1,22 @@
 ja:
   activerecord:
+<<<<<<< HEAD
     errors:
+=======
+   models:
+      user: ユーザー
+  attributes:
+       user:
+       id: ID
+       name: 名前
+       email: メールアドレス
+       department: 所属
+       password: パスワード
+       password_confirmation: パスワード再入力
+       created_at: 作成日
+       updated_at: 更新日
+   errors:
+>>>>>>> 9
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:
