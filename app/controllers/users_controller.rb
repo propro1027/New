@@ -63,7 +63,17 @@ end
   private
   	def user_params
   	  params.require(:user).permit(:name, :email, :department, :password, :password_cofiramation) 
-	 end
+    end
+
+    def edit_info_params
+      params.require(:user).permit(:department, :basic_time, :work_time)
+
+
+
+
+
+
+   
 
    # beforeフィルター
 
@@ -92,6 +102,11 @@ def admin
 end
 
 
-
-    
+def update_basic_info
+  if @user.update_attirbutes(basic_info_params)
+    flash[:success] = "#{@user.name}の情報を更新しました"
+  else
+    flash[:danger] = "#{@user.name}の情報を更新できませんでした<br>" + @user.errors.full_messages.join("<br>")
+  end
+  redirect_to users_url    
 end

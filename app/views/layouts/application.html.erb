@@ -1,36 +1,22 @@
-<% provide(:title, "AAA")%>
-
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New</title>
-    
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AAA</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
-    <%
-=begin%>
- railsが提供するcssタグ　rails6→7使えない？　http://www.code-magagine.com/?p=4592
-    <%= javascript_include_tag 'application','data-turbolinks-track': 'reload' %> 
-<%
-=end%>
-
-   <%= render 'layouts/def' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/def' %>
   </head>
-
   <body>
-  <%= render 'layouts/header' %>
-  <div class="container">
-
-  <%flash.each do |messages_type, msg|%>
-    <div class="alert alert-<%= messages_type %>"><%= msg%></div>
-   <%end%>
-   <%= yield %>
-   <% debug(params) if Rails.env.development? %>
-   </div>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, msg| %>
+        <div class="alert alert-<%= message_type %>"><%= msg.html_safe %></div>
+      <% end %>
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
   </body>
 </html>
-
