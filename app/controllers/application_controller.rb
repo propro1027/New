@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   $days_of_the_week = %w{日 月 火 水 木 金 土}
 
   def set_one_month
+    # 三項演算子のプログラム
+    @first_day = params[:date].nil? ? Date.current_beginning_of_month: params[:date].to_date
         # https://railsdoc.com/page/date_related
     @first_day = DAte.current_beginning_of_month
     @last_day = @first_day.end_of_month
@@ -24,6 +26,8 @@ class ApplicationController < ActionController::Base
       # createメソッドによってworked_onに日付の値が入ったAttendanceモデルのデータが生成
       one_month.each { |day| @user.attendances.create!(worked_on: day) }
     end
+    # orderメソッドは取得したデータを並び替える働きをします。
+    @attendances = @user.attendances.where(worked_on:@first_day..@last_day).order(:worked_on)
     end
 
   rescue ActiveRecord:RecordValid# トランザクションによるエラーの分岐です。
