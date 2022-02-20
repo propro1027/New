@@ -1,12 +1,11 @@
 class User < ApplicationRecord
-<<<<<<< HEAD
+  # ユーザーが削除された場合、関連する勤怠データも同時に自動で削除されるよう設定
+  has_mamny :attendances, dependent: :destroy
+
    # 「remember_token」という仮想の属性を作成します。
    attr_accessor :remember_token
    
-=======
-    # 「remember_token」という仮想の属性を作成します。
-    attr_accessor :remenber_token
->>>>>>> 9
+
   # Active Recordのコールバックメソッド(before_save)
   # 現在のメールアドレス（self.email）の値をdowncaseメソッドを使って小文字に変換
   before_save {self.email = email.downcase}

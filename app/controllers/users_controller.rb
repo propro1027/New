@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   # editとupdateアクションが実行される直前にlogged_in_userメソッドが実行
-before_action :logged_in_user, only:[:show, :edit, :update, :destory, :edit_basic_info, :update_basic_info]
+before_action :logged_in_user, only:[:index, :edit, :update, :destory, :edit_basic_info, :update_basic_info]
 before_action :correct_user, only:[:edit, :update]
-before_action :set_user, only:[:show, :edit, :update, :destory, :edit_basic_info, :update_basic_info]
+before_action :set_user, only:[:index, :edit, :update, :destory, :edit_basic_info, :update_basic_info]
 before_action :admin, only: [:destroy, :edit_basic_info, :update_basic_info]
-
+before_action :set_one_month, only: :show
 def index
   # @users = User.all
   @users = User.paginate(page: params[:page])
@@ -15,7 +15,6 @@ end
   end
 
   def show
-    # @user = User.find(params[:id])
   end
 
   def create
@@ -47,7 +46,14 @@ end
 def edit_basic_info
 end
 
+
 def update_basic_info
+if @user.update_attributes(basic_info_params)
+  flash[:success] = "#{@user.name}の基本情報を更新しました。"
+else
+  flash[:danger] = "#{@user.name}の更新は失敗しました。<br>" + @user.errors.full_messages.join("<br>")
+end
+redirect_to users_url
 end
 
 
@@ -57,35 +63,16 @@ def destroy
   redirect_to users_url
 end 
 
-
-
-def destroy
-  @user.destroy
-  flash[:success] = "#{@user.name}のデータを削除しました。"
-  redirect_to users_url
-end
-
   # Web経由で外部のユーザーが知る必要は無いため、privateキーワードを用いて外部からは使用できないようにします。
   private
   	def user_params
-<<<<<<< HEAD
   	  params.require(:user).permit(:name, :email, :password, :password_cofirmation) 
 	 end
-=======
-  	  params.require(:user).permit(:name, :email, :department, :password, :password_cofiramation) 
-    end
+
 
     def edit_info_params
       params.require(:user).permit(:department, :basic_time, :work_time)
-
-
-
-
-
-
-   
->>>>>>> 9
-
+    end
 
    
    # beforeフィルター////////////////////////////////////////////////////////////////////////////
@@ -114,15 +101,4 @@ def admin
   redirect_to root_url unless current_user.admin?
 end
 
-
-<<<<<<< HEAD
-=======
-def update_basic_info
-  if @user.update_attirbutes(basic_info_params)
-    flash[:success] = "#{@user.name}の情報を更新しました"
-  else
-    flash[:danger] = "#{@user.name}の情報を更新できませんでした<br>" + @user.errors.full_messages.join("<br>")
-  end
-  redirect_to users_url    
->>>>>>> 9
 end

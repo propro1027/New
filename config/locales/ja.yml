@@ -1,22 +1,26 @@
 ja:
   activerecord:
-<<<<<<< HEAD
-    errors:
-=======
-   models:
+    models:
       user: ユーザー
-  attributes:
-       user:
-       id: ID
-       name: 名前
-       email: メールアドレス
-       department: 所属
-       password: パスワード
-       password_confirmation: パスワード再入力
-       created_at: 作成日
-       updated_at: 更新日
-   errors:
->>>>>>> 9
+      attendance: 勤怠
+    attributes:
+        user:
+          id: ID
+          name: 名前
+          email: メールアドレス
+          department: 所属
+          basic_time: 基本時間
+          work_time: 勤務時間
+          password: パスワード
+          password_confirmation: パスワード再入力
+          created_at: 作成日
+          updated_at: 更新日
+        attendance:
+          worked_on: 日付
+          started_at: 出勤時間
+          finished_at: 退勤時間
+          note: 備考
+          user: ユーザーID
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:
@@ -219,6 +223,6 @@ ja:
     formats:
       default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       long: "%Y/%m/%d %H:%M"
-      short: "%m/%d %H:%M"
+      short: "%m/%d"
       time: "%H：%M"
     pm: 午後
