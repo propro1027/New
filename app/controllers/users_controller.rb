@@ -15,6 +15,8 @@ end
   end
 
   def show
+    # 1ヶ月間で何日出勤したか
+    @worked_sum = @attendances.where.not.(started_at: nil).count
   end
 
   def create
