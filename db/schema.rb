@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_214924) do
     t.string "remenber_digest"
     t.boolean "admin", default: false
     t.string "department"
-    t.datetime "basic_time", precision: 6, default: "2022-02-15 23:00:00"
-    t.datetime "work_time", precision: 6, default: "2022-02-15 23:00:00"
+    t.datetime "basic_time", precision: 6, default: "2022-02-22 23:00:00"
+    t.datetime "work_time", precision: 6, default: "2022-02-22 23:00:00"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

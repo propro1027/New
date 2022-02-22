@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # ユーザーが削除された場合、関連する勤怠データも同時に自動で削除されるよう設定
-  has_mamny :attendances, dependent: :destroy
+  has_many :attendances, dependent: :destroy
 
    # 「remember_token」という仮想の属性を作成します。
    attr_accessor :remember_token
