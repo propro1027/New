@@ -20,7 +20,8 @@ class ApplicationController < ActionController::Base
     # countメソッドは、対象のオブジェクトが配列の場合要素数
     unless one_month.count == @attendances.count # それぞれの件数（日数）が一致するか評価します。
 
-    ActiveRecord::Base.transaction do  トランザクションを開始します。
+    ActiveRecord::Base.transaction do  
+      # トランザクションを開始します。
       # 繰り返し処理により、1ヶ月分の勤怠データを生成します。
       # one_monthに対してeachメソッドを呼び出し
       # createメソッドによってworked_onに日付の値が入ったAttendanceモデルのデータが生成
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
     @attendances = @user.attendances.where(worked_on:@first_day..@last_day).order(:worked_on)
     end
 
-  rescue ActiveRecord:RecordValid# トランザクションによるエラーの分岐です。
+  rescue ActiveRecord::RecordValid# トランザクションによるエラーの分岐です。
     flash[:danger] = "ページ情報の取得に失敗しました、再アクセスして下さい"
     redirect_to root_url
   end
