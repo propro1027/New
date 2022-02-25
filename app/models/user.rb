@@ -39,7 +39,7 @@ class User < ApplicationRecord
     else
       BCypt::Engine.cost
     end
-    BCypt::Password.create(string, cost: cost)
+    BCrypt::Password.create(string, cost: cost)
   end
 
   # ランダムなトークンを返します。
