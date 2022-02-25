@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%
+=begin%>
+ <!DOCTYPE html>
 <html>
   <head>
     <title>AAA</title>
@@ -31,6 +33,31 @@
         <div class="alert alert-<%= message_type %>"><%= msg.html_safe %></div>
       <% end %>
 >>>>>>> 9
+      <%= yield %>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
+</html> 
+<%
+=end%>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                               'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',
+                               'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/def' %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, msg| %>
+        <div class="alert alert-<%= message_type %>"><%= msg.html_safe %></div>
+      <% end %>
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>
     </div>
