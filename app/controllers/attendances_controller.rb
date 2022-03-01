@@ -29,4 +29,7 @@ UP_DATE_ERROR_MSG = "勤怠登録に失敗しました、やり直してくだ�
 def edit_one_month
 end
 
+def update_one_month
+end
+
 end
